@@ -1,0 +1,16 @@
+docker run -it --rm -v C:\Users\86189\Desktop\Compiler:/root/compiler maxxing/compiler-dev bash
+cd compiler
+cd template
+make
+build/compiler -koopa hello.c -o hello.koopa
+docker run -it --rm -v C:\Users\86189\Desktop\Compiler\template\src:/root/compiler maxxing/compiler-dev \
+  autotest -koopa -s lv9 /root/compiler/template
+  autotest -riscv -s lv9 /root/compiler/template
+
+clang hello.S -c -o hello.o -target riscv32-unknown-linux-elf -march=rv32im -mabi=ilp32
+ld.lld hello.o -L$CDE_LIBRARY_PATH/riscv32 -lsysy -o hello
+qemu-riscv32-static hello
+
+koopac hello.koopa | llc --filetype=obj -o hello.o
+clang hello.o -L$CDE_LIBRARY_PATH/native -lsysy -o hello
+./hello
