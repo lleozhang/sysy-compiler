@@ -1,6 +1,11 @@
 # sysy-compiler
 
 This is the solution to sysy compiler lab of Peking University Compiler Principle class. These codes are certainly not the best and leave a lot of space for optimization. 
+The code organization is somewhat disasterous. If you have any problems, probably you are right. 
+
+## Code organization:
+
+The four files are corresponding to the frame given by https://pku-minic.github.io/online-doc/#/, and the whole environment are discussed in this reference. Specifically, docker.txt gives some handy instructions to set up the environment quickly, which can be used as a tip.
 
 ## Warning:
 
